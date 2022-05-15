@@ -6,6 +6,7 @@ const io = require("socket.io")(port, {
     },
 });
 
+// added users array
 let users = [];
 
 const addUser = (userId, socketId) => {
