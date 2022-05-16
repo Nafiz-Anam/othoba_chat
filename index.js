@@ -1,8 +1,10 @@
+const app = require("express")();
+const httpServer = require("http").createServer(app);
 const port = process.env.PORT || 8900;
 
-const io = require("socket.io")(port, {
+const io = require("socket.io")(httpServer, {
     cors: {
-        origin: "https://main--othobamart.netlify.app/",
+        origin: "*",
     },
 });
 
@@ -48,3 +50,5 @@ io.on("connection", (socket) => {
         io.emit("getUsers", users);
     });
 });
+
+httpServer.listen(port);
